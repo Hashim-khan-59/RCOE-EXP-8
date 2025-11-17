@@ -1,0 +1,29 @@
+#include <stdio.h>
+int main() {
+    char str[50];
+    int i, j, isPalindrome = 1;
+
+    printf("Enter a string: ");
+    fgets(str, sizeof(str), stdin);
+
+    for (i = 0; str[i] != '\0'; i++);
+    if (str[i - 1] == '\n') {
+        str[i - 1] = '\0';
+        i--;
+    }
+
+    j = i - 1; 
+    for (i = 0; i < j; i++, j--) {
+        if (str[i] != str[j]) {
+            isPalindrome = 0;
+            break;
+        }
+    }
+
+    if (isPalindrome)
+        printf("It is a palindrome.\n");
+    else
+        printf("It is NOT a palindrome.\n");
+
+    return 0;
+}

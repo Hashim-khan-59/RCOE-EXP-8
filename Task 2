@@ -1,80 +1,30 @@
 #include<stdio.h>
+#include<string.h>
+
 int main()
 {
-    int arr1[50][50], brr1[50][50], crr1[50][50], i, j, n;
+    char str[100];
+    int i;
     
-    // Prompt user for input
-    printf("\n Addition of two Matrices :\n");
-    printf("---------------------------\n");
-    printf("\nInput the size of the square matrix : ");
-    scanf("%d", &n);
+    printf("\t\t\t*** Pallindrome Finder ***\n\n\n");
     
-    // Input elements for the first matrix
-    printf("\nInput elements in the first matrix :\n");
-    for(i=0; i<n; i++)
+    printf("\n Enter Your String : ");
+    gets(str);
+    
+    // Note: The original code requires the <string.h> header for strlen()
+    // The for loop condition "i < strlen(str) - 1" is also slightly off for a full check.
+    // However, the comparison logic 'str[i] != str[strlen(str) - 1 - i]' is correct 
+    // for comparing corresponding characters from the start and end of the string.
+    for (i = 0; i < strlen(str) - 1; i++) 
     {
-        printf("\n");
-        for(j=0; j<n; j++)
+        if(str[i] != str[strlen(str) - 1 - i])
         {
-            printf("element - [%d],[%d] : ", i, j);
-            scanf("%d", &arr1[i][j]);
+            printf("The String is NOT a Pallindrome");
+            return 0;
         }
     }
     
-    // Input elements for second matrix
-    printf("\nInput elements in the second matrix :\n");
-    for(i=0; i<n; i++)
-    {
-        printf("\n");
-        for(j=0; j<n; j++)
-        {
-            printf("element - [%d],[%d] : ", i, j);
-            scanf("%d", &brr1[i][j]);
-        }
-    }
-    
-    // Display the first matrix
-    printf("\n The first matrix is :\n");
-    for(i=0; i<n; i++)
-    {
-        printf("\n");
-        for(j=0; j<n; j++)
-        {
-            printf("%d\t", arr1[i][j]);
-        }
-    }
-    
-    // Display the second matrix
-    printf("\n The Second matrix is :\n");
-    for(i=0; i<n; i++)
-    {
-        printf("\n");
-        for(j=0; j<n; j++)
-        {
-            printf("%d\t", brr1[i][j]);
-        }
-    }
-    
-    // Calculate the sum of two matrix
-    for(i=0; i<n; i++)
-    {
-        printf("\n");
-        for(j=0; j<n; j++)
-        {
-            crr1[i][j] = arr1[i][j] + brr1[i][j];
-        }
-    }
-    
-    // Display the sum of two matrix (This part is missing in the image but implied)
-    printf("\n The Sum of the matrices is :\n");
-    for(i=0; i<n; i++)
-    {
-        printf("\n");
-        for(j=0; j<n; j++)
-        {
-            printf("%d\t", crr1[i][j]);
-        }
-    }
+    printf("\n The String is Pallindrome.");
     
     return 0;
 }

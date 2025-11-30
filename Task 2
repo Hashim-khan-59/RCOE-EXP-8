@@ -1,30 +1,26 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 
-int main()
-{
+int main() {
     char str[100];
-    int i;
-    
-    printf("\t\t\t*** Pallindrome Finder ***\n\n\n");
-    
-    printf("\n Enter Your String : ");
-    gets(str);
-    
-    // Note: The original code requires the <string.h> header for strlen()
-    // The for loop condition "i < strlen(str) - 1" is also slightly off for a full check.
-    // However, the comparison logic 'str[i] != str[strlen(str) - 1 - i]' is correct 
-    // for comparing corresponding characters from the start and end of the string.
-    for (i = 0; i < strlen(str) - 1; i++) 
-    {
-        if(str[i] != str[strlen(str) - 1 - i])
-        {
-            printf("The String is NOT a Pallindrome");
+    int i, len;
+
+    printf("\t\t\t*** Palindrome Finder ***\n\n\n");
+    printf("Enter Your String: ");
+    fgets(str, sizeof(str), stdin);
+
+    len = strlen(str);
+    if (len > 0 && str[len - 1] == '\n') {
+        str[len - 1] = '\0';
+        len--;
+    }
+
+    for (i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - 1 - i]) {
+            printf("The String is NOT a Palindrome\n");
             return 0;
         }
     }
-    
-    printf("\n The String is Pallindrome.");
-    
+    printf("The String is a Palindrome\n");
     return 0;
 }

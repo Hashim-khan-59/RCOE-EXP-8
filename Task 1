@@ -7,13 +7,12 @@ int main()
     printf("\t\t\t*** String Length Finder ***\n\n\n");
     printf("Enter Your String : ");
     gets(str);
-    
-    // Loop to find the null terminator
+
     while(str[length] != '\0')
     {
         length++;
     }
     
-    printf("string length: %d Characters\n", length); // Added \n for clean output
+    printf("string length: %d Characters\n", length);
     return 0;
 }
